@@ -11,6 +11,8 @@ public interface UserDetailsMapper {
 //	@Select("SELECT * FROM user_detail where user_id={#userId}")
 	public UserDetail getUserDetail(int id);
 	
+	public UserDetail getUserDetailByLoginId(String loginId);
+	
 //	public int insertUserDetail(UserDetail userDetail);
 	
 //	public void updateUserDetail(UserDetail userDetail);
