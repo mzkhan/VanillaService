@@ -8,12 +8,11 @@ import com.markz.testApp.objects.UserDetail;
 public interface UserDetailsMapper {
 	public List<UserDetail> getAllUsers();
 	
-//	@Select("SELECT * FROM user_detail where user_id={#userId}")
 	public UserDetail getUserDetail(int id);
 	
 	public UserDetail getUserDetailByLoginId(String loginId);
 	
-//	public int insertUserDetail(UserDetail userDetail);
+	public void createUser(UserDetail userDetail);
 	
-//	public void updateUserDetail(UserDetail userDetail);
+	public void updateUser(UserDetail userDetail);
 }

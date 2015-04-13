@@ -34,4 +34,16 @@
 		SELECT * FROM user_details 
 		WHERE  user_id=#{loginId}
 	</select>
+	
+	<insert id="createUser" parameterType="com.markz.testApp.objects.UserDetail"
+	flushCache="true" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+		INSERT into user_details(name,age,user_id,zip)
+		VALUES (#{name},#{age},#{userId},#{zip})
+	</insert>
+	
+	<update id="updateUser" parameterType="com.markz.testApp.objects.UserDetail">
+		UPDATE user_details 
+		SET name=#{name}, user_id=#{userId}, age=#{age}, zip=#{zip}
+		WHERE id=#{id}
+	</update>
 </mapper>
