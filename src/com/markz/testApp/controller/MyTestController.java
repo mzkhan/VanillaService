@@ -18,6 +18,7 @@ import com.markz.testApp.mappers.UserDetailsMapper;
 import com.markz.testApp.objects.UserDetail;
 
 @RestController
+@RequestMapping("/users")
 public class MyTestController {
 
 	private static final Logger LOGGER = Logger
@@ -26,19 +27,19 @@ public class MyTestController {
 	@Autowired
 	UserDetailsMapper userDetailsMapper;
 
-	@RequestMapping(value = "/users/{id}")
+	@RequestMapping(value = "/{id}")
 	public UserDetail getUserById(@PathVariable int id) {
 		LOGGER.info("ID: " + id);
 		return userDetailsMapper.getUserDetail(id);
 	}
 
-	@RequestMapping(value = "/users")
+	@RequestMapping(method=RequestMethod.GET)
 	public List<UserDetail> userList() {
 		LOGGER.info("Request for All the users");
 		return userDetailsMapper.getAllUsers();
 	}
 
-	@RequestMapping(value = "/user/create", method = RequestMethod.POST)
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void createUser(@RequestBody UserDetail userDetail,
 			HttpServletResponse httpServletResponse) {
 		LOGGER.info("Creating User with Name = " + userDetail.getName()
@@ -53,7 +54,7 @@ public class MyTestController {
 		}
 	}
 
-	@RequestMapping(value = "/user/update/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
 	public UserDetail updateUser(@RequestBody UserDetail userDetail,
 			@PathVariable int id, HttpServletResponse httpServletResponse, 
 			AuthenticationException authException) {
