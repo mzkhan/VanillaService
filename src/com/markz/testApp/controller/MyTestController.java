@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,7 +55,8 @@ public class MyTestController {
 
 	@RequestMapping(value = "/user/update/{id}", method = RequestMethod.PUT)
 	public UserDetail updateUser(@RequestBody UserDetail userDetail,
-			@PathVariable int id, HttpServletResponse httpServletResponse) {
+			@PathVariable int id, HttpServletResponse httpServletResponse, 
+			AuthenticationException authException) {
 		LOGGER.info("Updating the user with id: " + id);
 
 		try {
