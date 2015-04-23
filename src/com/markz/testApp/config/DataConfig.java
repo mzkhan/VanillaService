@@ -18,9 +18,9 @@ public class DataConfig {
 	@Bean
 	public DataSource dataSource() {
 		String driverClass = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://enliteinstance.c9a1yjg7i5cn.us-east-1.rds.amazonaws.com:3306/test";
-		String username = "master";
-		String password = "enliteUs";
+		String url = "jdbc:mysql://<serverURL>:3306/<databse>";
+		String username = "user";
+		String password = "passwd";
 		PooledDataSource dataSource = new PooledDataSource(driverClass, url, username, password);
 //		dataSource.setPoolMaximumActiveConnections(20);		
 		return dataSource;
